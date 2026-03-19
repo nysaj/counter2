@@ -2,16 +2,25 @@
   const $counter = document.getElementById("js-counter");
 
   const clickHandler = (e) => {
-    const $targetButton = e.currentTarget;
+    const $targetButton = e.currentTarget.dataset.step;
     let currentCount = parseInt($counter.textContent);
-    if ($targetButton.textContent === "+") {
-      $counter.textContent = currentCount + 1;
-    } else if ($targetButton.textContent === "-") {
+    // if ($targetButton.textContent === "+") {
+    //   $counter.textContent = currentCount + 1;
+    // } else if ($targetButton.textContent === "-") {
+    //   $counter.textContent = currentCount - 1;
+    // } else if ($targetButton.textContent === "+10") {
+    //   $counter.textContent = currentCount +10;
+    // } else {
+    //   $counter.textContent = currentCount -10;
+    // }
+    if ($targetButton === "-1") {
       $counter.textContent = currentCount - 1;
-    } else if ($targetButton.textContent === "+10") {
-      $counter.textContent = currentCount +10;
+    } else if ($targetButton === "1") {
+      $counter.textContent = currentCount + 1;
+    } else if ($targetButton === "-10") {
+      $counter.textContent = currentCount - 10;
     } else {
-      $counter.textContent = currentCount -10;
+      $counter.textContent = currentCount + 10;
     }
   };
   for (let i = 0; i < document.getElementsByClassName("js-button").length; i++) {

@@ -1,5 +1,7 @@
 (() => {
   const $counter = document.getElementById("js-counter");
+  const $result = document.getElementById("result");
+  const $button = document.getElementsByClassName("js-button");
 
   const clickHandler = (e) => {
     const $targetButton = e.currentTarget.dataset.step;
@@ -22,11 +24,34 @@
     } else {
       $counter.textContent = currentCount + 10;
     }
+
+    // 更新した値を取得
+    const newCount = parseInt($counter.textContent);
+    // 更新した値に応じてコメント
+    switch (newCount) {
+      case 0:
+        $result.textContent = "0です";
+        break;
+      case 100:
+        $result.textContent = "100突破";
+        break;
+      case -100:
+        $result.textContent = "-100突破";
+        break;
+      case 1000:
+        $result.textContent = "1000まで到達！、、、まだするの？";
+        break;
+      case -1000:
+        $result.textContent = "-1000まで到達！、、、まだ続けるの？";
+        break;
+      default:
+        $result.textContent = "";
+        break;
+    }
+    console.log($result.textContent);
   };
-  for (let i = 0; i < document.getElementsByClassName("js-button").length; i++) {
-    document
-      .getElementsByClassName("js-button")
-      [i].addEventListener("click", (e) => clickHandler(e));
+  for (let i = 0; i < $button.length; i++) {
+    $button[i].addEventListener("click", (e) => clickHandler(e));
   }
 })();
 

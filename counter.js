@@ -28,28 +28,27 @@
     // 更新した値を取得
     const newCount = parseInt($counter.textContent);
     // 更新した値に応じてコメント
-    switch (newCount) {
-      case 0:
-        $result.textContent = "0です";
-        break;
-      case 100:
-        $result.textContent = "100突破";
-        break;
-      case -100:
-        $result.textContent = "-100突破";
-        break;
-      case 1000:
-        $result.textContent = "1000まで到達！、、、まだするの？";
-        break;
-      case -1000:
-        $result.textContent = "-1000まで到達！、、、まだ続けるの？";
-        break;
-      default:
-        $result.textContent = "";
-        break;
+    if (newCount === 0) {
+      $result.textContent = "0です";
+    } else if (newCount >= 1000) {
+      $result.textContent = "1000まで到達！、、、まだ押すの？";
+    } else if (newCount <= -1000) {
+      $result.textContent = "-1000まで到達！、、、まだ続けるの？";
+    } else if (newCount === 100) {
+      $result.textContent = "100突破！";
+    } else if (newCount === -100) {
+      $result.textContent = "-100突破！";
+    } else if (newCount >= 100) {
+      $result.textContent = "100以上です";
+    } else if (newCount <= -100) {
+      $result.textContent = "-100以下です";
+    } else if (newCount < 100) {
+      $result.textContent = "";
     }
+
     console.log($result.textContent);
   };
+
   for (let i = 0; i < $button.length; i++) {
     $button[i].addEventListener("click", (e) => clickHandler(e));
   }
